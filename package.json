@@ -1,0 +1,22 @@
+{
+  "name": "full-stack-developer-project-upwork",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "start:backend": "npm --prefix backend start",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "generate-pdf": "node sample_data/generate_sample_pdf.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^18.0.1",
+    "markdown-it": "^15.0.2",
+    "pdfkit": "^0.20.2"
+  }
+}
