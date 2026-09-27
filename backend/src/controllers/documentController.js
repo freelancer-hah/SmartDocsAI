@@ -111,10 +111,12 @@ export class DocumentController {
    */
   static async loadSamplePolicy(req, res, next) {
     try {
-      const samplePdfPath = path.resolve(__dirname, '../../../sample_data/Acme_Global_Employee_Handbook_2026.pdf');
+      const samplePdfPathPrimary = path.resolve(__dirname, '../../../sample_data/Acme_Global_Employee_Handbook_2026.pdf');
+      const samplePdfPathFallback = path.resolve(__dirname, '../../sample_data/Acme_Global_Employee_Handbook_2026.pdf');
+      const samplePdfPath = fs.existsSync(samplePdfPathPrimary) ? samplePdfPathPrimary : (fs.existsSync(samplePdfPathFallback) ? samplePdfPathFallback : null);
 
       let pdfBuffer;
-      if (fs.existsSync(samplePdfPath)) {
+      if (samplePdfPath && fs.existsSync(samplePdfPath)) {
         pdfBuffer = fs.readFileSync(samplePdfPath);
       } else {
         return res.status(404).json({
