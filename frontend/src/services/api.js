@@ -2,7 +2,8 @@
  * API Client for SmartDocs AI Backend
  */
 
-const API_BASE = '/api';
+const BACKEND_URL = import.meta.env.VITE_API_URL || '';
+const API_BASE = BACKEND_URL ? (BACKEND_URL.endsWith('/api') ? BACKEND_URL : `${BACKEND_URL}/api`) : '/api';
 
 async function parseResponse(res, fallbackErrMsg) {
   const text = await res.text();
